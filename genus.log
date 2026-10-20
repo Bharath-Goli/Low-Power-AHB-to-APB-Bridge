@@ -1,0 +1,51 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2022 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+[10:35:10.171345] Configured Lic search path (21.01-s002): 5280@LIC-SRV2
+
+Version: 21.14-s082_1, built Thu Jun 23 02:02:08 PDT 2022
+Options: -legacy_ui 
+Date:    Fri Aug 07 10:35:10 2026
+Host:    cadence172 (x86_64 w/Linux 4.18.0-425.3.1.el8.x86_64) (6cores*12cpus*1physical cpu*Intel(R) Core(TM) i7-8700 CPU @ 3.20GHz 12288KB) (16283352KB)
+PID:     163215
+OS:      Red Hat Enterprise Linux release 8.7 (Ootpa)
+
+
+[10:35:10.147513] Periodic Lic check successful
+[10:35:10.147515] Feature usage summary:
+[10:35:10.147520] Genus_Synthesis
+Checking out license: Genus_Synthesis
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Loading tool scripts...
+Finished loading tool scripts (9 seconds elapsed).
+
+WARNING: This version of the tool is 1505 days old.
+legacy_genus:/> set_attribute library /path/to/your/tcbn65gplus.lib
+Error   : File error. [FILE-100] [set_attribute]
+        : Cannot open file '/path/to/your/tcbn65gplus.lib'. File not found.
+        : Make sure that the file is a readable regular file and has the specified name.
+Error   : A library file does not exist. [LBR-68] [set_attribute]
+        : File '/path/to/your/tcbn65gplus.lib' could not be found. File '<none>' was the last file that was successfully read in.
+        : Make sure that the library file exists or check for a typo in the file name.
+Error   : The data value for this attribute is invalid. [TUI-24] [set_attribute]
+        : The value '/path/to/your/tcbn65gplus.lib' cannot be set for attribute 'library'.
+        : To see the usage/description for this attribute, type '::legacy::set_attribute -h <attr_name> *' (in legacy UI mode) or 'help * <attr_name> -detail' (in CUI mode).
+1
+legacy_genus:/> which genus
+legacy_genus:/> genus -version
+legacy_genus:/> exit
+
+Lic Summary:
+[11:13:29.221931] Cdslmd servers:5280@LIC-SRV2
+[11:13:29.221945] Feature usage summary:
+[11:13:29.221946] Genus_Synthesis
+
+Normal exit.

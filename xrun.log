@@ -1,0 +1,169 @@
+xrun(64): 22.09-s003: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	22.09-s003: Started on Aug 07, 2026 at 10:27:27 IST
+xrun
+	-uvm
+	+UVM_TESTNAME=ahb_random_test
+	-coverage functional
+	-covoverwrite
+	-f files_lowpower.f
+		ahb_apb_if.sv
+		ahb_transaction.sv
+		ahb_random_seq.sv
+		ahb_driver.sv
+		ahb_apb_monitor.sv
+		ahb_apb_scoreboard.sv
+		ahb_apb_coverage.sv
+		ahb_apb_env.sv
+		ahb_apb_base_test.sv
+		ahb_random_test.sv
+		apb_slave_model.sv
+		icg_cell.sv
+		ahb2apb_bridge_lp.sv
+		ahb_apb_system_tb.sv
+file: ahb_apb_if.sv
+	interface worklib.ahb_apb_if:sv
+		errors: 0, warnings: 0
+file: apb_slave_model.sv
+	module worklib.apb_slave_model:sv
+		errors: 0, warnings: 0
+file: icg_cell.sv
+	module worklib.icg_cell:sv
+		errors: 0, warnings: 0
+file: ahb2apb_bridge_lp.sv
+    assign ahb_clk_en = bridge_enable & (|grant_ff | |grant_next | (state != BRIDGE_IDLE));
+                                                     |
+xmvlog: *W,DUPBWO (ahb2apb_bridge_lp.sv,128|53): error prone bit-wise OR ('|') sequence detected [4.1.11(IEEE)].
+file: ahb_apb_system_tb.sv
+	module worklib.ahb_apb_system_tb:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+    ) dut (
+        |
+xmelab: *W,CUVWSP (./ahb_apb_system_tb.sv,39|8): 2 output ports were not connected:
+xmelab: (./ahb2apb_bridge_lp.sv,76): lp_ahb_clk_en
+xmelab: (./ahb2apb_bridge_lp.sv,77): lp_apb_clk_en
+
+	Top level design units:
+		uvm_pkg
+		cdns_uvmapi
+		cdns_assert2uvm_pkg
+		cdns_uvm_pkg
+		$unit_0x184e4777
+		ahb_apb_system_tb
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Enabling instrumentation for coverage types: functional
+	Generating native compiled code:
+		worklib.apb_slave_model:sv <0x4905c675>
+			streams:   5, words:  2884
+		worklib.icg_cell:sv <0x41e0d29b>
+			streams:   3, words:   611
+		worklib.ahb2apb_bridge_lp:sv <0x65a5102d>
+			streams:  30, words: 13079
+		worklib.ahb_apb_if:sv <0x4de6b979>
+			streams: 677, words: 689687
+	Building instance specific data structures.
+xmelab: *W,CGPIDF: Covergroup "per_instance" option , by default, is set as 0.
+xmelab: *N,COVCGN: Coverage configuration file command "set_covergroup -new_instance_reporting" can be specified to improve the scoping and naming of covergroup instances. It may be noted that subsequent merging of a coverage database saved with this command and a coverage database saved without this command is not allowed.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                       Instances  Unique
+		Modules:                       5       4
+		Interfaces:                    1       1
+		Verilog packages:              4       4
+		Registers:                 13914   10246
+		Scalar wires:                 41       -
+		Vectored wires:               27       -
+		Named events:                  4      12
+		Always blocks:                11      10
+		Initial blocks:              287     159
+		Clocking blocks:               2       2
+		Clocking items:               32      32
+		Parallel blocks:              26      27
+		Cont. assignments:             6      11
+		Pseudo assignments:           29      29
+		Assertions:                    2       2
+		Covergroup Instances:          0       2
+		Compilation units:             1       1
+		SV Class declarations:       199     312
+		SV Class specializations:    383     383
+	Writing initial simulation snapshot: worklib.ahb_apb_system_tb:sv
+Loading snapshot worklib.ahb_apb_system_tb:sv .................... Done
+SVSEED default: 1
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /home/install/XCELIUM2209/tools/xcelium/files/xmsimrc
+xcelium> source /home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+----------------------------------------------------------------
+CDNS-UVM-1.1d (22.09-s003)
+(C) 2007-2013 Mentor Graphics Corporation
+(C) 2007-2013 Cadence Design Systems, Inc.
+(C) 2006-2013 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ahb_random_test...
+xmsim: *W,DVEXACC: some objects excluded from $dumpvars due to access restrictions, use +access+r on command line for access to all objects.
+            File: ./ahb_apb_system_tb.sv, line = 97, pos = 16
+           Scope: ahb_apb_system_tb
+            Time: 0 FS + 0
+
+UVM_INFO ahb_random_test.sv(21) @ 0: uvm_test_top [TEST] Running random regression (200 transactions)
+UVM_INFO /home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1268) @ 3995: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO ahb_apb_coverage.sv(143) @ 3995: uvm_test_top.env.coverage [COV] Transfer CG coverage:    86.3%
+UVM_INFO ahb_apb_coverage.sv(144) @ 3995: uvm_test_top.env.coverage [COV] Safety/APB CG coverage:  37.5%
+UVM_INFO ahb_apb_scoreboard.sv(44) @ 3995: uvm_test_top.env.scoreboard [SB] Scoreboard Summary: PASS=87 FAIL=0
+
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :    6
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[COV]     2
+[RNTST]     1
+[SB]     1
+[TEST]     1
+[TEST_DONE]     1
+Simulation complete via $finish(1) at time 3995 NS + 51
+/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_root.svh:457     $finish;
+xcelium> exit
+xmsim: *N,COVCGN: Coverage configuration file command "set_covergroup -new_instance_reporting" can be specified to improve the scoping and naming of covergroup instances. It may be noted that subsequent merging of a coverage database saved with this command and a coverage database saved without this command is not allowed.
+xmsim: *W,CGDEFN: Default name "worklib.uvm_pkg::.transfer_cg" will be generated for covergroup instance "transfer_cg" as the name of the covergroup instance is not specified explicitly: ./ahb_apb_coverage.sv, 34.
+xmsim: *W,CGDEFN: Default name "worklib.uvm_pkg::.safety_cg" will be generated for covergroup instance "safety_cg" as the name of the covergroup instance is not specified explicitly: ./ahb_apb_coverage.sv, 90.
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  ahb_apb_system_tb(ahb_apb_system_tb)
+  scope    :  scope
+  testname :  test
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_00000000_46745dd4.ucm
+  data               :  ./cov_work/scope/test/icc_00000000_46745dd4.ucd
+TOOL:	xrun(64)	22.09-s003: Exiting on Aug 07, 2026 at 10:27:30 IST  (total: 00:00:03)

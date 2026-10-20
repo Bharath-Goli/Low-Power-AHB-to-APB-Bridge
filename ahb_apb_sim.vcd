@@ -1,0 +1,65 @@
+$date
+    Aug  7, 2026  10:27:30
+$end
+$version
+    TOOL:	xmsim(64)	22.09-s003
+$end
+$timescale
+    1 ns
+$end
+
+$scope module ahb_apb_system_tb $end
+
+$scope module dut $end
+$var parameter 32 !    DATA_WIDTH $end
+$var parameter 32 "    ADDR_WIDTH $end
+$var parameter 32 #    NUM_MASTERS $end
+$var parameter 32 $    APB_WAIT_MAX $end
+$var parameter  2 %    IDLE $end
+$var parameter  2 &    BUSY $end
+$var parameter  2 '    NONSEQ $end
+$var parameter  2 (    SEQ $end
+$var parameter  3 )    SINGLE $end
+$var parameter  3 *    INCR $end
+$var parameter  3 +    WRAP4 $end
+$var parameter  3 ,    INCR4 $end
+$var parameter  3 -    WRAP8 $end
+$var parameter  3 .    INCR8 $end
+$var parameter  3 /    WRAP16 $end
+$var parameter  3 0    INCR16 $end
+$upscope $end
+
+
+$scope module apb_slave $end
+$var parameter 32 1    DATA_WIDTH $end
+$var parameter 32 2    ADDR_WIDTH $end
+$var parameter 32 3    MEM_DEPTH $end
+$var parameter 32 4    MAX_WAIT $end
+$upscope $end
+
+$upscope $end
+
+$enddefinitions $end
+$dumpvars
+b11 4
+b100000000 3
+b100000 2
+b100000 1
+b111 0
+b110 /
+b101 .
+b100 -
+b11 ,
+b10 +
+b1 *
+b0 )
+b11 (
+b10 '
+b1 &
+b0 %
+b11 $
+b10 #
+b100000 "
+b100000 !
+$end
+#3995

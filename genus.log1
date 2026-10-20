@@ -1,0 +1,68 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2022 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+[11:32:05.171361] Configured Lic search path (21.01-s002): 5280@LIC-SRV2
+
+Version: 21.14-s082_1, built Thu Jun 23 02:02:08 PDT 2022
+Options: -batch -files genus_baseline.tcl 
+Date:    Fri Aug 07 11:32:05 2026
+Host:    cadence172 (x86_64 w/Linux 4.18.0-425.3.1.el8.x86_64) (6cores*12cpus*1physical cpu*Intel(R) Core(TM) i7-8700 CPU @ 3.20GHz 12288KB) (16283352KB)
+PID:     205976
+OS:      Red Hat Enterprise Linux release 8.7 (Ootpa)
+
+
+[11:32:06.027626] Periodic Lic check successful
+[11:32:06.027632] Feature usage summary:
+[11:32:06.027632] Genus_Synthesis
+Checking out license: Genus_Synthesis
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Loading tool scripts...
+Finished loading tool scripts (6 seconds elapsed).
+
+#@ Processing -files option
+@genus 1> source genus_baseline.tcl
+#@ Begin verbose source ./genus_baseline.tcl
+@file(genus_baseline.tcl) 1: set_db init_lib_search_path {/home/install/GENUS211/share/synth/tutorials/tech}
+  Setting attribute of root '/': 'init_lib_search_path' = /home/install/GENUS211/share/synth/tutorials/tech
+@file(genus_baseline.tcl) 2: set_db library {tutorial.lib}
+
+Threads Configured:3
+
+  Message Summary for Library tutorial.lib:
+  *****************************************
+  Missing threshold parameters. [LBR-519]: 1
+  Missing library level attribute. [LBR-516]: 9
+  *****************************************
+ 
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 5.000000, 25.000000) in library 'tutorial.lib'.
+        : The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).
+  Setting attribute of root '/': 'library' = tutorial.lib
+@file(genus_baseline.tcl) 3: read_hdl -sv {ahb2apb_bridge.sv}
+`include "uvm_macros.svh"
+                        |
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'uvm_macros.svh' in file 'ahb2apb_bridge.sv' on line 15, column 25.
+        : The specified file could not be opened.  Check the value of the init_hdl_search_path attribute.
+import uvm_pkg::*;
+             |
+Error   : The referenced package does not exist.. [VLOGPT-28] [read_hdl]
+        : Reference to non-existent package 'uvm_pkg' in file 'ahb2apb_bridge.sv' on line 16, column 14.
+        : The referenced package does not exist in the same HDL library.
+#@ End verbose source ./genus_baseline.tcl
+1
+Encountered problems processing file: genus_baseline.tcl
+
+Lic Summary:
+[11:32:12.110281] Cdslmd servers:5280@LIC-SRV2
+[11:32:12.110299] Feature usage summary:
+[11:32:12.110299] Genus_Synthesis
+

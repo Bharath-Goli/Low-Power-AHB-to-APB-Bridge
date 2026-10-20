@@ -1,0 +1,119 @@
+# =============================================================================
+# power_intent.upf
+# UPF 2.1 power intent for the AHB2APB bridge low-power implementation
+#
+# Scope:
+#   - Top module   : ahb_apb_system_tb   (matches ahb_apb_system_tb.sv)
+#   - DUT instance : dut  (ahb2apb_bridge)
+#
+# Two domains:
+#   PD_TOP    - always-on domain (testbench, APB slave model, interconnect)
+#   PD_BRIDGE - switchable domain wrapping the bridge instance "dut"
+#
+# The bridge's own port "bridge_enable" doubles as the software/system
+# power-gate request; PSW_BRIDGE.enable is driven from it so that whenever
+# bridge_enable=0 the block's rail can be safely collapsed.
+# =============================================================================
+
+set_design_top ahb_apb_system_tb
+
+# -----------------------------------------------------------------------------
+# 1. Create power domains
+# -----------------------------------------------------------------------------
+create_power_domain PD_TOP \
+    -elements {.}
+
+create_power_domain PD_BRIDGE \
+    -elements {dut}
+
+# -----------------------------------------------------------------------------
+# 2. Supply ports / nets
+# -----------------------------------------------------------------------------
+create_supply_port VDD_IN  -direction in
+create_supply_port VSS_IN  -direction in
+
+create_supply_net VDD        -domain PD_TOP
+create_supply_net VSS        -domain PD_TOP
+create_supply_net VDD_BRIDGE -domain PD_BRIDGE
+create_supply_net VSS_BRIDGE -domain PD_BRIDGE
+
+connect_supply_net VDD -ports VDD_IN
+connect_supply_net VSS -ports VSS_IN
+
+set_domain_supply_net PD_TOP    -primary_power_net VDD        -primary_ground_net VSS
+set_domain_supply_net PD_BRIDGE -primary_power_net VDD_BRIDGE -primary_ground_net VSS_BRIDGE
+
+# -----------------------------------------------------------------------------
+# 3. Power switch for PD_BRIDGE
+#    Controlled directly by the bridge_enable port: 1 = powered, 0 = off.
+# -----------------------------------------------------------------------------
+create_power_switch PSW_BRIDGE \
+    -domain           PD_BRIDGE \
+    -input_supply_port  {vin  VDD} \
+    -output_supply_port {vout VDD_BRIDGE} \
+    -control_port       {ctrl dut.bridge_enable} \
+    -on_state           {ON vin {ctrl}} \
+    -off_state          {OFF {!ctrl}}
+
+# -----------------------------------------------------------------------------
+# 4. Isolation on every PD_BRIDGE output that fans out to the always-on domain
+#    Clamp values chosen so the always-on side sees a benign, inactive bus
+#    when the bridge rail is off: no AHB grant/ready glitch, no spurious APB
+#    access.
+# -----------------------------------------------------------------------------
+set_isolation ISO_BRIDGE_AHB \
+    -domain PD_BRIDGE \
+    -isolation_power_net VDD -isolation_ground_net VSS \
+    -clamp_value 1 \
+    -applies_to outputs \
+    -elements {dut.HREADY} \
+    -isolation_signal dut.bridge_enable -isolation_sense low
+
+set_isolation ISO_BRIDGE_AHB_RESP \
+    -domain PD_BRIDGE \
+    -isolation_power_net VDD -isolation_ground_net VSS \
+    -clamp_value 0 \
+    -applies_to outputs \
+    -elements {dut.HRESP dut.HRDATA} \
+    -isolation_signal dut.bridge_enable -isolation_sense low
+
+set_isolation ISO_BRIDGE_APB \
+    -domain PD_BRIDGE \
+    -isolation_power_net VDD -isolation_ground_net VSS \
+    -clamp_value 0 \
+    -applies_to outputs \
+    -elements {dut.PSEL dut.PENABLE dut.PADDR dut.PWRITE dut.PWDATA} \
+    -isolation_signal dut.bridge_enable -isolation_sense low
+
+set_isolation ISO_BRIDGE_DFV \
+    -domain PD_BRIDGE \
+    -isolation_power_net VDD -isolation_ground_net VSS \
+    -clamp_value 0 \
+    -applies_to outputs \
+    -elements {dut.dfv_fsm_state dut.dfv_grant dut.dfv_burst_cnt} \
+    -isolation_signal dut.bridge_enable -isolation_sense low
+
+# -----------------------------------------------------------------------------
+# 5. Retention: NOT required in this architecture.
+#    bridge_enable is only deasserted by the system when the bridge FSM is
+#    idle and no master is granted (see icg_cell / ahb_clk_en logic in
+#    ahb2apb_bridge_lp.sv), so there is no live transaction state to save
+#    across a power-off event. If your system integration can force
+#    bridge_enable low mid-transaction, add retention on: state, rr_ptr,
+#    grant_ff, addr_reg, wdata_reg, write_reg, hburst_reg, burst_cnt,
+#    burst_len before doing so.
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# 6. Power state table
+# -----------------------------------------------------------------------------
+add_port_state VDD_IN -state {HIGH 1.0}
+add_port_state VSS_IN -state {GND  0.0}
+
+add_power_state PD_BRIDGE.primary \
+    -state ON  {-logic_expr {dut.bridge_enable} -supply_expr {power == {FULL_ON, VDD} and ground == {FULL_ON, VSS}}} \
+    -state OFF {-logic_expr {!dut.bridge_enable} -supply_expr {power == OFF and ground == OFF}}
+
+create_pst PST_BRIDGE -supplies {VDD VSS VDD_BRIDGE VSS_BRIDGE}
+add_pst_state S0_ACTIVE  -pst PST_BRIDGE -state {VDD{ON} VSS{ON} VDD_BRIDGE{ON}  VSS_BRIDGE{ON}}
+add_pst_state S1_BR_OFF  -pst PST_BRIDGE -state {VDD{ON} VSS{ON} VDD_BRIDGE{OFF} VSS_BRIDGE{OFF}}

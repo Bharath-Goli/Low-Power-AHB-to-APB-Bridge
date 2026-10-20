@@ -1,0 +1,197 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2022 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+[11:43:19.171417] Configured Lic search path (21.01-s002): 5280@LIC-SRV2
+
+Version: 21.14-s082_1, built Thu Jun 23 02:02:08 PDT 2022
+Options: -batch -files genus_baseline.tcl 
+Date:    Fri Aug 07 11:43:19 2026
+Host:    cadence172 (x86_64 w/Linux 4.18.0-425.3.1.el8.x86_64) (6cores*12cpus*1physical cpu*Intel(R) Core(TM) i7-8700 CPU @ 3.20GHz 12288KB) (16283352KB)
+PID:     214399
+OS:      Red Hat Enterprise Linux release 8.7 (Ootpa)
+
+
+[11:43:19.252330] Periodic Lic check successful
+[11:43:19.252336] Feature usage summary:
+[11:43:19.252337] Genus_Synthesis
+Checking out license: Genus_Synthesis
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Loading tool scripts...
+Finished loading tool scripts (6 seconds elapsed).
+
+#@ Processing -files option
+@genus 1> source genus_baseline.tcl
+#@ Begin verbose source ./genus_baseline.tcl
+@file(genus_baseline.tcl) 1: set_db init_lib_search_path {/home/install/GENUS211/share/synth/tutorials/tech}
+  Setting attribute of root '/': 'init_lib_search_path' = /home/install/GENUS211/share/synth/tutorials/tech
+@file(genus_baseline.tcl) 2: set_db library {tutorial.lib}
+
+Threads Configured:3
+
+  Message Summary for Library tutorial.lib:
+  *****************************************
+  Missing threshold parameters. [LBR-519]: 1
+  Missing library level attribute. [LBR-516]: 9
+  *****************************************
+ 
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 5.000000, 25.000000) in library 'tutorial.lib'.
+        : The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).
+  Setting attribute of root '/': 'library' = tutorial.lib
+@file(genus_baseline.tcl) 3: set_db init_hdl_search_path {/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src}
+  Setting attribute of root '/': 'init_hdl_search_path' = /home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src
+@file(genus_baseline.tcl) 4: read_hdl -sv -incdir /home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src {/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/uvm_pkg.sv ahb2apb_bridge.sv}
+Warning : Cannot open file. [VLOGPT-650]
+        : File '-incdir'.
+        : The specified file could not be opened.  Check the value of the init_hdl_search_path attribute.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src'.
+  import "DPI-C" context function int uvm_hdl_check_path(string path);
+               |
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : Expecting a package scope. in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 59, column 16.
+        : Invalid Verilog syntax is parsed, or unsupported Verilog syntax is encountered.
+  import "DPI-C" context function int uvm_hdl_check_path(string path);
+               |
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : Expecting token ';', found 'string_literal' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 59, column 16.
+  import "DPI-C" context function int uvm_hdl_deposit(string path, uvm_hdl_data_t value);
+               |
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : Expecting a package scope. in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 67, column 16.
+  import "DPI-C" context function int uvm_hdl_deposit(string path, uvm_hdl_data_t value);
+               |
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : Expecting token ';', found 'string_literal' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 67, column 16.
+  import "DPI-C" context function int uvm_hdl_force(string path, uvm_hdl_data_t value);
+               |
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : Expecting a package scope. in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 74, column 16.
+  import "DPI-C" context function int uvm_hdl_force(string path, uvm_hdl_data_t value);
+               |
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : Expecting token ';', found 'string_literal' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 74, column 16.
+  task uvm_hdl_force_time(string path, uvm_hdl_data_t value, time force_time=0);
+                               |
+Error   : Unsupported declaration. [VLOGPT-32] [read_hdl]
+        : String type in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 83, column 32.
+        : The following declarations are not supported for synthesis:
+    - tri0
+    - tri1
+    - event
+    - class
+    - chandle
+    - SV string type
+    - associative array.
+  task uvm_hdl_force_time(string path, uvm_hdl_data_t value, time force_time=0);
+                                    |
+Error   : Illegal use of SystemVerilog reserved word. [VLOGPT-8] [read_hdl]
+        : Keyword 'string' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 83, column 37.
+        : SystemVerilog introduces many new keywords.  They are:
+    alias           do              join_any        solve
+    always_comb     endclass        join_none       static
+    always_ff       endclocking     local           string
+    always_latch    endinterface    logic           struct
+    assert          endprogram      longint         super
+    assert_strobe   endproperty     modport         this
+    before          endsequence     new             throughout
+    bind            enum            null            timeprecision
+    bit             export          packed          timeunit
+    break           extends         priority        type
+    byte            extern          program         typedef
+    chandle         final           property        union
+    class           first_match     protected       unique
+    clocking        forkjoin        pure            unique0
+    const           iff             rand            var
+    constraint      import          randc           virtual
+    context         inside          ref             void
+    continue        int             sequence        wait_order
+    cover           interface       shortint        with
+    dist            intersect       shortreal       within
+To use these keywords as identifiers in a design, you must read the input design with 'read_hdl -v1995' or 'read_hdl -v2001'; or use the pragma:
+    `begin_keywords "1364-1995"
+or    `begin_keywords "1364-2001".
+  task uvm_hdl_force_time(string path, uvm_hdl_data_t value, time force_time=0);
+                                    |
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : Unknown type '(null)' for subprogram port 'string' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 83, column 37.
+  task uvm_hdl_force_time(string path, uvm_hdl_data_t value, time force_time=0);
+                                    |
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : Expecting token ')', found '<identifier>' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 83, column 37.
+  task uvm_hdl_force_time(string path, uvm_hdl_data_t value, time force_time=0);
+                                    |
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : Expecting token ';', found '<identifier>' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 83, column 37.
+    if (force_time == 0) begin
+        |
+Error   : Reference to undeclared variable. A variable/parameter must be declared before it is referenced. [VLOGPT-20] [read_hdl]
+        : Symbol 'force_time' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 84, column 9.
+        : Verilog module is using a parameter that is not defined in the module. You will get a notification for this, if you read the verilog file using the read_hdl command.
+      void'(uvm_hdl_deposit(path, value));
+                            |
+Error   : Reference to undeclared variable. A variable/parameter must be declared before it is referenced. [VLOGPT-20] [read_hdl]
+        : Symbol 'path' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 85, column 29.
+      void'(uvm_hdl_deposit(path, value));
+                                  |
+Error   : Reference to undeclared variable. A variable/parameter must be declared before it is referenced. [VLOGPT-20] [read_hdl]
+        : Symbol 'value' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 85, column 35.
+    if (!uvm_hdl_force(path, value))
+                       |
+Error   : Reference to undeclared variable. A variable/parameter must be declared before it is referenced. [VLOGPT-20] [read_hdl]
+        : Symbol 'path' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 88, column 24.
+    if (!uvm_hdl_force(path, value))
+                             |
+Error   : Reference to undeclared variable. A variable/parameter must be declared before it is referenced. [VLOGPT-20] [read_hdl]
+        : Symbol 'value' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 88, column 30.
+    if (!uvm_hdl_force(path, value))
+                       |
+Error   : Reference to undeclared variable. A variable/parameter must be declared before it is referenced. [VLOGPT-20] [read_hdl]
+        : Symbol 'path' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 88, column 24.
+    if (!uvm_hdl_force(path, value))
+                             |
+Error   : Reference to undeclared variable. A variable/parameter must be declared before it is referenced. [VLOGPT-20] [read_hdl]
+        : Symbol 'value' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 88, column 30.
+    #force_time;
+              |
+Warning : Ignoring unsynthesizable delay specifier (#<n>) mentioned in verilog file. These delay numbers are for simulation purpose only. [VLOGPT-35]
+        : in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 90, column 15.
+        : All delay numbers assigned or used in behavioral code are for simulation purposes only and are not synthesizable. These values are ignored during synthesis. This warning is issued only once per module.
+    void'(uvm_hdl_release_and_read(path, value));
+                                   |
+Error   : Reference to undeclared variable. A variable/parameter must be declared before it is referenced. [VLOGPT-20] [read_hdl]
+        : Symbol 'path' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 91, column 36.
+    void'(uvm_hdl_release_and_read(path, value));
+                                         |
+Error   : Reference to undeclared variable. A variable/parameter must be declared before it is referenced. [VLOGPT-20] [read_hdl]
+        : Symbol 'value' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 91, column 42.
+      void'(uvm_hdl_deposit(path, value));
+            |
+Error   : Unresolved subprogram reference. [VLOGPT-203] [read_hdl]
+        : Call to subprogram 'uvm_hdl_deposit' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 85, column 13.
+        : Error encountered during Verilog parsing.
+    if (!uvm_hdl_force(path, value))
+         |
+Error   : Unresolved subprogram reference. [VLOGPT-203] [read_hdl]
+        : Call to subprogram 'uvm_hdl_force' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 88, column 10.
+    void'(uvm_hdl_release_and_read(path, value));
+          |
+Error   : Unresolved subprogram reference. [VLOGPT-203] [read_hdl]
+        : Call to subprogram 'uvm_hdl_release_and_read' in file '/home/install/XCELIUM2209/tools/methodology/UVM/CDNS-1.1d/sv/src/dpi/uvm_hdl.svh' on line 91, column 11.
+#@ End verbose source ./genus_baseline.tcl
+1
+Encountered problems processing file: genus_baseline.tcl
+
+Lic Summary:
+[11:43:26.141208] Cdslmd servers:5280@LIC-SRV2
+[11:43:26.141226] Feature usage summary:
+[11:43:26.141227] Genus_Synthesis
+

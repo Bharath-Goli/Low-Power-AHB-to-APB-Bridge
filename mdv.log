@@ -1,0 +1,20 @@
+12:28:07:0375 [com.cadence.system] [main] FATAL - Failed - (LMF-03513): License call failed for feature Incisive_Enterprise_Simulator, version 15.2 and quantity 1. The license server search path is defined as 5280@LIC-SRV2&5280@LIC-SRV2. The FLEXnet error message is as follows,
+FLEXnet ERROR(-513, 7006, 0): Error List Returned (-513,7006) ; Can't Connect to License Server (-15,3002) (LIC-SVR2); Can't Connect to License Server (-15,3002) (LIC-SVR2)
+
+Run 'lic_error LMF-03513' for more information.
+12:33:08:0436 [com.cadence.system] [main] FATAL - Failed - (LMF-03513): License call failed for feature Affirma_sim_analysis_env, version 15.2 and quantity 1. The license server search path is defined as 5280@LIC-SRV2&5280@LIC-SRV2. The FLEXnet error message is as follows,
+FLEXnet ERROR(-513, 7006, 0): Error List Returned (-513,7006) ; Can't Connect to License Server (-15,3002) (LIC-SVR2); Can't Connect to License Server (-15,3002) (LIC-SVR2)
+
+Run 'lic_error LMF-03513' for more information.
+15:19:54:0905 [com.cadence.system] [main] FATAL - Failed - (LMF-03513): License call failed for feature Affirma_sim_analysis_env, version 15.2 and quantity 1. The license server search path is defined as 5280@LIC-SRV2&5280@LIC-SRV2. The FLEXnet error message is as follows,
+FLEXnet ERROR(-513, 7006, 0): Error List Returned (-513,7006) ; Can't Connect to License Server (-15,3002) (LIC-SVR2); Can't Connect to License Server (-15,3002) (LIC-SVR2)
+
+Run 'lic_error LMF-03513' for more information.
+15:39:34:0629 [com.cadence.system] [main] FATAL - Failed - (LMF-03513): License call failed for feature Incisive_Enterprise_Simulator, version 15.2 and quantity 1. The license server search path is defined as 5280@LIC-SRV2&5280@LIC-SRV2. The FLEXnet error message is as follows,
+FLEXnet ERROR(-513, 7006, 0): Error List Returned (-513,7006) ; Can't Connect to License Server (-15,3002) (LIC-SVR2); Can't Connect to License Server (-15,3002) (LIC-SVR2)
+
+Run 'lic_error LMF-03513' for more information.
+15:39:58:0436 [com.cadence.system] [main] FATAL - Failed - (LMF-03513): License call failed for feature Incisive_Enterprise_Simulator, version 15.2 and quantity 1. The license server search path is defined as 5280@LIC-SRV2&5280@LIC-SRV2. The FLEXnet error message is as follows,
+FLEXnet ERROR(-513, 7006, 0): Error List Returned (-513,7006) ; Can't Connect to License Server (-15,3002) (LIC-SVR2); Can't Connect to License Server (-15,3002) (LIC-SVR2)
+
+Run 'lic_error LMF-03513' for more information.
